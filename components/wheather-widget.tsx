@@ -11,7 +11,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
-  CloudIcon,
   MapPinIcon,
   ThermometerIcon,
   RefreshCwIcon,
@@ -68,8 +67,8 @@ export default function WeatherWidget() {
 
       setWeather(weatherData);
     } catch (error) {
-      setError("City not found. Please try again.");
-      setWeather(null);
+    {typeof error === "string" && <div className="mt-4 text-red-500">{error}</div>}
+    setWeather(null);
     } finally {
       setIsLoading(false);
     }
